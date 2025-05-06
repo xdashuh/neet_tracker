@@ -9,6 +9,6 @@ def home():
 @app.route('/submit', methods=['POST'])
 def submit():
     selected_task = request.form.getlist('tasks')
-    return f"You completed: {",".join(selected_task)}"
+    return f"You completed: {','.join(selected_task)}"
 if __name__ == '__main__':
     app.run(debug=True)
