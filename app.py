@@ -10,4 +10,5 @@ def home():
 def submit():
     selected_task = request.form.getlist('tasks')
     return f"You completed: {','.join(selected_task)}"
-if __name__ == '__main__'
+if __name__ == '__main__':
+    app.run()
