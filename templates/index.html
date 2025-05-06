@@ -1,0 +1,87 @@
+Html
+
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NEET Tracker</title>
+        <link rel="stylesheet" href="{{url_for('static',
+        filename='style.css')}}">
+    </head>    
+    <body class="dark-mode">
+        <button id="modeToggle" title="Toggle Mode">🌙</button>
+
+        <h1>Welcome to NEET Tracker ANUSHKA(BBG🥰)</h1>
+        <form method="POST" action="/submit">
+            <label><input type="checkbox" name="tasks" value="Workout"> Workout (5:30-6:30 AM)</label><br>
+            <label><input type="checkbox" name="tasks" value="School"> School (7:45-2:00 PM)</label><br>
+            <label><input type="checkbox" name="tasks" value="PW"> PW coaching (4:00-8:00 PM)</label><br>
+            <label><input type="checkbox" name="tasks" value="MCQ"> MCQ practice (4:00-8:00 PM)</label><br>
+            <label><input type="checkbox" name="tasks" value="Revision">  Self-Study/revision (4:00-8:00 PM)</label><br><br>
+            <hr>
+            <h3>
+                Track Subject Completion
+            </h3>
+            <label><input type="checkbox" id="mon_botany"
+            class="progress_check"> Monday - Botany</label><br>
+            <label><input type="checkbox" id="mon_chem"
+            class="progress_check"> Monday - Chemistry</label><br>
+            <label><input type="checkbox" id="tue_botany"
+            class="progress_check"> Tuesday - Botany</label><br>
+            <label><input type="checkbox" id="tue_chem"
+            class="progress_check"> Tuesday - Chemistry</label><br>
+            <label><input type="checkbox" id="wed_chem"
+            class="progress_check"> Wednesday - Chemistry</label><br>
+            <label><input type="checkbox" id="wed_phy"
+            class="progress_check"> Wednesday - Physics</label><br>
+            <label><input type="checkbox" id="thu_phy"
+            class="progress_check"> Thursday - Physics</label><br>
+            <label><input type="checkbox" id="thu_zoo"
+            class="progress_check"> Thursday - Zoology</label><br>
+            <label><input type="checkbox" id="fri_phy"
+            class="progress_check"> Friday - Physics</label><br>
+            <label><input type="checkbox" id="fri_zoo"
+            class="progress_check"> Friday - Zoology</label><br>
+            <button type="submit">Submit</button>
+        </form>
+        <!-- Weekly Class Schedule -->
+         <div class="Schedule">
+            <h2>Weekly Study Schedule</h2>
+            <table>
+                <tr><th>Day</th><th>Subjects</th></tr>
+                <tr><td>Monday</td><td>Botany, Chemistry</td></tr>
+                <tr><td>Tuesday</td><td>Botany, Chemistry</td></tr>
+                <tr><td>Wednesday</td><td>Physics, Chemistry</td></tr>
+                <tr><td>Thursday</td><td>Physics, Zoology</td></tr>
+                <tr><td>Friday</td><td>Physics, Zoology</td></tr>
+            </table>
+         </div>
+         <script>
+            const toggleBtn =
+        document.getElementById('modeToggle');
+            const body = document.body;
+
+            toggleBtn.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                body.classList.toggle('light-mode');
+
+                toggleBtn.innerText =
+            body.classList.contains('dark-mode')
+                    ? '🌙'
+                    : '☀️'
+            }) 
+         </script>
+         <script>
+            // Save checkbox state
+            document.querySelectorAll('.progress-check').forEach(checkbox => {
+                checkbox.checked =
+            localStorage.getItem(checkbox.id)== 'true';
+
+            checkbox.addEventListener('change', () => {
+                localStorage.setItem(checkbox.id,
+            checkbox.checked);
+            });
+        });
+         </script>
+    </body>
+</html>
